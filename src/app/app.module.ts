@@ -6,12 +6,20 @@ import 'hammerjs';
 import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material'
 
+import { AppRoutingModule } from './app-routing/app-routing.module';
 import { AppComponent } from './app.component';
 import { TmdbService } from './tmdb.service';
+import { YourListsComponent } from './your-lists/your-lists.component';
+import { AddListModalComponent } from './your-lists/add-list-modal.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    YourListsComponent,
+    AddListModalComponent
+  ],
+  entryComponents: [
+    AddListModalComponent
   ],
   imports: [
     BrowserModule,
@@ -19,7 +27,8 @@ import { TmdbService } from './tmdb.service';
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpModule
+    HttpModule,
+    AppRoutingModule
   ],
   providers: [TmdbService],
   bootstrap: [AppComponent]
