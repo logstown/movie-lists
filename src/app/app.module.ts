@@ -1,9 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import 'hammerjs';
+import { HttpModule } from '@angular/http';
+import { MaterialModule } from '@angular/material'
 
 import { AppComponent } from './app.component';
+import { TmdbService } from './tmdb.service';
 
 @NgModule({
   declarations: [
@@ -11,9 +15,13 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MaterialModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpModule
   ],
-  providers: [],
+  providers: [TmdbService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
