@@ -1,0 +1,8 @@
+<md-input-container>
+    <input mdInput placeholder="TV Show" [mdAutocomplete]="auto" [formControl]="showControl">
+</md-input-container>
+<md-autocomplete #auto="mdAutocomplete">
+    <md-option *ngFor="let show of filteredShows | async" [value]="show.name" (onSelectionChange)="selected(show)">
+        {{ show.name }}
+    </md-option>
+</md-autocomplete>

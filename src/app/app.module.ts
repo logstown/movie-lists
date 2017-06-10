@@ -11,12 +11,14 @@ import { AppComponent } from './app.component';
 import { TmdbService } from './tmdb.service';
 import { YourListsComponent } from './your-lists/your-lists.component';
 import { AddListModalComponent } from './your-lists/add-list-modal.component';
+import { TmdbSearchComponent } from './tmdb-search/tmdb-search.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     YourListsComponent,
-    AddListModalComponent
+    AddListModalComponent,
+    TmdbSearchComponent
   ],
   entryComponents: [
     AddListModalComponent

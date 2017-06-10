@@ -1,5 +1,10 @@
 <h1 md-dialog-title>Dialog</h1>
-<div md-dialog-content>What would you like to do?</div>
+<div md-dialog-content>
+  <md-card>
+    <app-tmdb-search (onItemSelected)="onItemSelected($event)"></app-tmdb-search>
+  </md-card>
+  <img *ngFor="let show of shows" src="https://image.tmdb.org/t/p/w150{{show.poster_path}}" alt="">
+</div>
 <div md-dialog-actions>
   <button md-button md-dialog-close="Option 1">Option 1</button>
   <button md-button md-dialog-close="Option 2">Option 2</button>
