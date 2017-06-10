@@ -37,5 +37,7 @@ export class TmdbSearchComponent implements OnInit {
 
   selected(show: TvShow) {
     this.onItemSelected.emit(show);
+
+    this.showControl.reset();
   }
 }
