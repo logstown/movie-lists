@@ -3,7 +3,11 @@
   <md-card>
     <app-tmdb-search (onItemSelected)="onItemSelected($event)"></app-tmdb-search>
   </md-card>
-  <img *ngFor="let show of shows" src="https://image.tmdb.org/t/p/w150{{show.poster_path}}" alt="">
+  <div [sortablejs]="shows" [sortablejsOptions]="{ animation: 150, ghostClass: 'ghost' }">
+    <div *ngFor="let show of shows" style="display: inline-block;">
+      <img src="https://image.tmdb.org/t/p/w150{{show.poster_path}}" alt="">
+    </div>
+  </div>
 </div>
 <div md-dialog-actions>
   <button md-button md-dialog-close="Option 1">Option 1</button>

@@ -5,6 +5,7 @@ import { TvShow } from '../tv-show';
 @Component({
   selector: 'app-add-list-modal',
   templateUrl: 'add-list-modal.component.html',
+  styleUrls: ['./add-list-modal.component.css']
 })
 export class AddListModalComponent implements OnInit {
     shows: TvShow[]

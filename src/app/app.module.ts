@@ -4,7 +4,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import 'hammerjs';
 import { HttpModule } from '@angular/http';
-import { MaterialModule } from '@angular/material'
+import { MaterialModule } from '@angular/material';
+import { SortablejsModule } from 'angular-sortablejs';
 
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { AppComponent } from './app.component';
@@ -30,7 +31,8 @@ import { TmdbSearchComponent } from './tmdb-search/tmdb-search.component';
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SortablejsModule
   ],
   providers: [TmdbService],
   bootstrap: [AppComponent]
