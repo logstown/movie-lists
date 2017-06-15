@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TmdbService } from './tmdb.service';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,9 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'app';
 
-  constructor() {}
+  constructor(tmdbService: TmdbService) {
+    tmdbService.loadConfig();
+  }
 
   // filterStates(val: string) {
   //   return val ? this.states.filter(s => new RegExp(`^${val}`, 'gi').test(s)) : this.states;

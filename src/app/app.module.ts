@@ -6,6 +6,10 @@ import 'hammerjs';
 import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 import { SortablejsModule } from 'angular-sortablejs';
+import { AngularFireModule } from 'angularfire2';
+import { environment } from '../environments/environment';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { AppComponent } from './app.component';
@@ -32,7 +36,10 @@ import { TmdbSearchComponent } from './tmdb-search/tmdb-search.component';
     ReactiveFormsModule,
     HttpModule,
     AppRoutingModule,
-    SortablejsModule
+    SortablejsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule, // imports firebase/database, only needed for database features
+    AngularFireAuthModule, // imports firebase/auth, only needed for auth features
   ],
   providers: [TmdbService],
   bootstrap: [AppComponent]

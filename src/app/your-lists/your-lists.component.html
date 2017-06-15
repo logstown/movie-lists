@@ -1,6 +1,8 @@
-<p>
-  your-lists works!
-</p>
+<ul>
+  <li class="text" *ngFor="let item of items | async">
+    {{item.$value}}
+  </li>
+</ul>
 <button md-fab class="add-button" (click)="openAddListModal()">
   <md-icon>add</md-icon>
 </button>

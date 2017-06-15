@@ -1,15 +1,46 @@
-<h1 md-dialog-title>Dialog</h1>
+<md-toolbar color="primary">
+  <span>New List</span>
+  <span class="spacer"></span>
+  <md-select placeholder="Type" name="type" [(ngModel)]="listType">
+    <md-option value="movie">Movies</md-option>
+    <md-option value="show">TV Shows</md-option>
+    <md-option value="season">TV Seasons</md-option>
+    <md-option value="episode">TV Episodes</md-option>        
+  </md-select>
+</md-toolbar>
 <div md-dialog-content>
   <md-card>
-    <app-tmdb-search (onItemSelected)="onItemSelected($event)"></app-tmdb-search>
+    <md-input-container>
+        <input *ngIf="listType == 'movie'" mdInput placeholder="Search Movies" [formControl]="movieControl" (keyup.enter)="addFirst()">
+        <input *ngIf="listType == 'show'" mdInput placeholder="Search TV Shows" [formControl]="tvShowControl" (keyup.enter)="addFirst()">
+    </md-input-container>
+    <div>
+      <div *ngFor="let show of filteredTvShowsAsync | async" style="display: inline-block; vertical-align: middle;" (click)="addShow(show)">
+        <img mdTooltip="{{show.name}}" *ngIf="show.poster_path" src="https://image.tmdb.org/t/p/w92{{show.poster_path}}" alt="">
+      </div>
+    </div>
   </md-card>
-  <div [sortablejs]="shows" [sortablejsOptions]="{ animation: 150, ghostClass: 'ghost' }">
-    <div *ngFor="let show of shows" style="display: inline-block;">
-      <img src="https://image.tmdb.org/t/p/w150{{show.poster_path}}" alt="">
+  <div [sortablejs]="yourTvShowList" [sortablejsOptions]="sortablejsOptions">
+    <div *ngFor="let show of yourTvShowList; let i = index" style="display: inline-block; vertical-align: middle;">
+      <img mdTooltip="{{show.name}}" src="https://image.tmdb.org/t/p/w92{{show.poster_path}}" style="padding: 5px;">
+      <div style="text-align: center;">{{i+1}}</div>
     </div>
   </div>
+
+  <!--<md-grid-list *ngIf="listType == 'show'" cols="4" rowHeight="2:3">
+    <md-grid-tile *ngFor="let show of filteredTvShows | async"><img src="https://image.tmdb.org/t/p/w92{{show.poster_path}}" alt=""></md-grid-tile>
+  </md-grid-list>-->
+
+
+  <!--<app-tmdb-search (onItemSelected)="onItemSelected($event)"></app-tmdb-search>
+  <div [sortablejs]="shows" [sortablejsOptions]="{ animation: 150, ghostClass: 'ghost' }">
+    <md-card *ngFor="let show of shows" style="display: inline-block;">
+      <img md-card-image src="https://image.tmdb.org/t/p/w92{{show.poster_path}}">
+    </md-card>
+  </div>-->
 </div>
 <div md-dialog-actions>
-  <button md-button md-dialog-close="Option 1">Option 1</button>
-  <button md-button md-dialog-close="Option 2">Option 2</button>
+  <span class="spacer"></span>
+  <button md-button md-dialog-close="Option 1">Save</button>
+  <button md-button md-dialog-close="Option 2">Cancel</button>
 </div>

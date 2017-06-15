@@ -2,7 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 
-import { TvShow } from '../tv-show';
+import { TvShow, Movie } from '../media.models';
 import { TmdbService } from '../tmdb.service';
 
 // Observable class extensions
@@ -32,7 +32,7 @@ export class TmdbSearchComponent implements OnInit {
         .startWith(null)
         .debounceTime(300)
         .distinctUntilChanged()
-        .switchMap(term => term ? this.tmdbService.search(term) : Observable.of < TvShow[] > ([]))
+        .switchMap(term => term ? this.tmdbService.searchTvShows(term) : Observable.of < TvShow[] > ([]))
   }
 
   selected(show: TvShow) {
